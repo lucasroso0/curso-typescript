@@ -1,18 +1,80 @@
-import {Produto} from './model/produto'
-import {Estoque} from './model/estoque'
+// import {Biblioteca} from './Exercicios/Atv1/biblioteca'
+// import {Livro} from './Exercicios/Atv1/livro'
 
-const produto1 = new Produto(1,'Chocolate',5.00,2)
-const estoque = new Estoque()
+// const biblioteca = new Biblioteca()
 
-estoque.adicionarProduto(new Produto(1,'Chocolate1',5.10,2))
-estoque.adicionarProduto(new Produto(2,'Chocolate2',5.20,3))
-estoque.adicionarProduto(new Produto(3,'Chocolate3',5.30,4))
-estoque.adicionarProduto(new Produto(4,'Chocolate4',5.40,5))
-estoque.adicionarProduto(new Produto(5,'Chocolate5',5.50,6))
+// biblioteca.adicionarLivro(new Livro(102,'A volta','Lian Horst',false));
+// biblioteca.adicionarLivro(new Livro(133,'Sede de Sangue','Leonardo Person',false));
+// biblioteca.adicionarLivro(new Livro(11,'A volta','Helena Brits' ,true));
 
-console.log(estoque.listaProdutos)
+// console.log(biblioteca.listarLivro());
+// console.log("\n");
+// console.log(biblioteca.registrarEmprestimo(11));
+// console.log("\n");
+// console.log(biblioteca.consultarDisponibilidade(133));
 
-estoque.atualizarQuantidade(2,10)
 
-console.log(estoque.listaProdutos)
+
+
+// import { Funcionario } from './Exercicios/Atv2/funcionario'
+// import { Empresa } from './Exercicios/Atv2/empresa'
+
+// const empresa = new Empresa()
+// empresa.adicionarFuncionario(new Funcionario(1512,'Gabriel','T.I',1900))
+// empresa.adicionarFuncionario(new Funcionario(1212,'Carlos','Diretor',3900))
+// empresa.adicionarFuncionario(new Funcionario(1012,'Henrique','RH',2500))
+// console.log("\n");
+
+// empresa.atualizarSalario(1512,2500)
+// console.log("\n");
+
+// empresa.consultarFuncionario(1512)
+// console.log("\n");
+// empresa.consultarFuncionario(1)
+
+
+// import { Hotel } from "./Exercicios/Atv3/hotel";
+// import { Reserva } from "./Exercicios/Atv3/reserva";
+
+// const hotel = new  Hotel();
+// hotel.registrarReserva(new Reserva(1,'Lucas',new Date('2024-12-13'),new Date('2024-12-20')));
+// hotel.registrarReserva(new Reserva(2,'Carlos',new Date('2024-09-10'),new Date('2024-09-15')));
+// hotel.registrarReserva(new Reserva(3,'Daniel',new Date('2024-08-13'),new Date('2024-08-20')));
+// console.log("\n");
+// console.log(hotel.listarReservas());
+// console.log("\n");
+// hotel.cancelarReserva(1);
+// console.log("\n");
+// console.log(hotel.ConsultarStatusQuarto(1));
+// console.log("\n");
+// console.log(hotel.ConsultarStatusQuarto(2));
+// console.log("\n");
+
+import { Tarefa } from "./Exercicios/Atv4/tarefa";
+import { GestorTarefas } from "./Exercicios/Atv4/gestortarefas";
+
+    const tarefa1 = new Tarefa(1, 'Desenvolver backend da aplicação', 'Pendente', 'Projeto A');
+    const tarefa2 = new Tarefa(2, 'Criar interface do usuário', 'Em Andamento', 'Projeto A');
+    const tarefa3 = new Tarefa(3, 'Escrever documentação', 'Pendente', 'Projeto B');
+
+    const gestor = new GestorTarefas();
+
+    gestor.adicionarTarefa(tarefa1);
+    gestor.adicionarTarefa(tarefa2);
+    gestor.adicionarTarefa(tarefa3);
+
+    gestor.atualizarStatus(1, 'Concluída');
+
+    console.log('\nTarefas do Projeto A:');
+    const tarefasProjetoA = gestor.consultarTarefasPorProjeto('Projeto A');
+    tarefasProjetoA.forEach(tarefa => {
+        console.log(`ID: ${tarefa.id}, Descrição: ${tarefa.descricao}, Status: ${tarefa.status}`);
+    });
+
+    console.log('\nTarefas do Projeto B:');
+    const tarefasProjetoB = gestor.consultarTarefasPorProjeto('Projeto B');
+    tarefasProjetoB.forEach(tarefa => {
+        console.log(`ID: ${tarefa.id}, Descrição: ${tarefa.descricao}, Status: ${tarefa.status}`);
+    });
+
 
