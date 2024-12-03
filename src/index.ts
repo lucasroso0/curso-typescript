@@ -50,31 +50,94 @@
 // console.log(hotel.ConsultarStatusQuarto(2));
 // console.log("\n");
 
-import { Tarefa } from "./Exercicios/Atv4/tarefa";
-import { GestorTarefas } from "./Exercicios/Atv4/gestortarefas";
+// import { Tarefa } from "./Exercicios/Atv4/tarefa";
+// import { GestorTarefas } from "./Exercicios/Atv4/gestortarefas";
 
-    const tarefa1 = new Tarefa(1, 'Desenvolver backend da aplicação', 'Pendente', 'Projeto A');
-    const tarefa2 = new Tarefa(2, 'Criar interface do usuário', 'Em Andamento', 'Projeto A');
-    const tarefa3 = new Tarefa(3, 'Escrever documentação', 'Pendente', 'Projeto B');
+//     const tarefa1 = new Tarefa(1, 'Desenvolver backend da aplicação', 'Pendente', 'Projeto A');
+//     const tarefa2 = new Tarefa(2, 'Criar interface do usuário', 'Em Andamento', 'Projeto A');
+//     const tarefa3 = new Tarefa(3, 'Escrever documentação', 'Pendente', 'Projeto B');
 
-    const gestor = new GestorTarefas();
+//     const gestor = new GestorTarefas();
 
-    gestor.adicionarTarefa(tarefa1);
-    gestor.adicionarTarefa(tarefa2);
-    gestor.adicionarTarefa(tarefa3);
+//     gestor.adicionarTarefa(tarefa1);
+//     gestor.adicionarTarefa(tarefa2);
+//     gestor.adicionarTarefa(tarefa3);
 
-    gestor.atualizarStatus(1, 'Concluída');
+//     gestor.atualizarStatus(1, 'Concluída');
 
-    console.log('\nTarefas do Projeto A:');
-    const tarefasProjetoA = gestor.consultarTarefasPorProjeto('Projeto A');
-    tarefasProjetoA.forEach(tarefa => {
-        console.log(`ID: ${tarefa.id}, Descrição: ${tarefa.descricao}, Status: ${tarefa.status}`);
-    });
+//     console.log('\nTarefas do Projeto A:');
+//     const tarefasProjetoA = gestor.consultarTarefasPorProjeto('Projeto A');
+//     tarefasProjetoA.forEach(tarefa => {
+//         console.log(`ID: ${tarefa.id}, Descrição: ${tarefa.descricao}, Status: ${tarefa.status}`);
+//     });
 
-    console.log('\nTarefas do Projeto B:');
-    const tarefasProjetoB = gestor.consultarTarefasPorProjeto('Projeto B');
-    tarefasProjetoB.forEach(tarefa => {
-        console.log(`ID: ${tarefa.id}, Descrição: ${tarefa.descricao}, Status: ${tarefa.status}`);
-    });
+//     console.log('\nTarefas do Projeto B:');
+//     const tarefasProjetoB = gestor.consultarTarefasPorProjeto('Projeto B');
+//     tarefasProjetoB.forEach(tarefa => {
+//         console.log(`ID: ${tarefa.id}, Descrição: ${tarefa.descricao}, Status: ${tarefa.status}`);
+//     });
 
 
+
+
+
+
+
+
+// Atividade do Factory e do Builder
+
+import { EditorPDF  } from "./Exercicios/Factory Method/Factory";
+import { EditorDOCX } from "./Exercicios/Factory Method/Factory";
+import { EditorXLSX } from "./Exercicios/Factory Method/Factory";
+import { EditorTXT  } from "./Exercicios/Factory Method/Factory";
+
+function main() {
+    const editorPDF = new EditorPDF();
+    editorPDF.gerenciarArquivo();
+
+    const editorDOCX = new EditorDOCX();
+    editorDOCX.gerenciarArquivo();
+
+    const editorXLSX = new EditorXLSX();
+    editorXLSX.gerenciarArquivo();
+
+    const editorTXT = new EditorTXT();
+    editorTXT.gerenciarArquivo();
+}
+
+main();
+
+
+import{PepperoniPizzaBuilder} from "./Exercicios/Builder/ClassPizza"
+import { Pizza } from "./Exercicios/Builder/ClassPizza";
+import { MargheritaPizzaBuilder } from "./Exercicios/Builder/ClassPizza";
+import { PizzaDirector } from "./Exercicios/Builder/ClassPizza";
+// Criando os Builders
+const margheritaBuilder = new MargheritaPizzaBuilder();
+const pepperoniBuilder = new PepperoniPizzaBuilder();
+
+// Criando o Diretor
+const director = new PizzaDirector(margheritaBuilder);
+
+// Criando uma pizza Margherita usando o Diretor
+director.createMargheritaPizza();
+const margheritaPizza = margheritaBuilder.getResult();
+console.log("Pizza Margherita:");
+margheritaPizza.display();
+
+// Criando uma pizza Pepperoni usando o Diretor
+director.setBuilder(pepperoniBuilder);
+director.createPepperoniPizza();
+const pepperoniPizza = pepperoniBuilder.getResult();
+console.log("Pizza Pepperoni:");
+pepperoniPizza.display();
+
+// Criando uma pizza personalizada diretamente com o Builder
+const customPizzaBuilder = new MargheritaPizzaBuilder();
+customPizzaBuilder.setSize("média");
+customPizzaBuilder.setDough("tradicional");
+customPizzaBuilder.addTopping("Queijo");
+customPizzaBuilder.addTopping("Pepperoni");
+const customPizza = customPizzaBuilder.getResult();
+console.log("Pizza Personalizada:");
+customPizza.display();
